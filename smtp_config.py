@@ -1,26 +1,8 @@
-import os
 import smtplib
-import sys
-from configparser import ConfigParser
-
 
 def send_email(subject, body_text, emails):
-    """
-    Send an email
-    """
 
-    base_path = os.path.dirname(os.path.abspath(__file__))
-    config_path = os.path.join(base_path, "email.ini")
-
-    if os.path.exists(config_path):
-        cfg = ConfigParser()
-        cfg.read(config_path)
-    else:
-        print("Config not found! Exiting!")
-        sys.exit(1)
-
-    host = cfg.get("smtp", "server")
-    from_addr = cfg.get("smtp", "from_addr")
+    from_addr = "test01235@bk.ru"
 
     BODY = "\r\n".join((
         "From: %s" % from_addr,
@@ -30,13 +12,14 @@ def send_email(subject, body_text, emails):
         body_text
     ))
 
-    server = smtplib.SMTP(host)
+    server = smtplib.SMTP("smtp.mail.ru", 465)
+    server.login('test01235@bk.ru', '135642!Sm')
     server.sendmail(from_addr, emails, BODY)
     server.quit()
 
 
 if __name__ == "__main__":
-    emails = ["mike@someAddress.org", "someone@gmail.com"]
-    subject = "Test email from Python"
-    body_text = "Python rules them all!"
+    emails = ["beretta07@bk.ru"]
+    subject = "test1"
+    body_text = "123"
     send_email(subject, body_text, emails)
