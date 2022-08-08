@@ -16,7 +16,7 @@ try:
     smtp.ehlo()
     smtp.starttls()
     smtp.ehlo()
-    smtp.login(msg["From"], "qGTgZ3qm")
+    smtp.login(msg["From"], "-")
     smtp.send_message(msg)
     smtp.close()
     print('OK')
