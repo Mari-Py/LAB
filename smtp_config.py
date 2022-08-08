@@ -2,7 +2,7 @@ import smtplib
 
 def send_email(subject, body_text, emails):
 
-    from_addr = "test01235@bk.ru"
+    from_addr = "_"
 
     BODY = "\r\n".join((
         "From: %s" % from_addr,
@@ -13,13 +13,13 @@ def send_email(subject, body_text, emails):
     ))
 
     server = smtplib.SMTP("smtp.mail.ru", 465)
-    server.login('test01235@bk.ru', '135642!Sm')
+    server.login('_', '_')
     server.sendmail(from_addr, emails, BODY)
     server.quit()
 
 
 if __name__ == "__main__":
-    emails = ["beretta07@bk.ru"]
+    emails = ["_"]
     subject = "test1"
     body_text = "123"
     send_email(subject, body_text, emails)
